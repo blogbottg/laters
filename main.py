@@ -88,7 +88,7 @@ async def translate_function(message: Message, state: FSMContext):
 
         cursor.execute('''
         INSERT INTO translate(telegram_id, src, dest, original_text, translated_text)
-        VALUES (?,?,?,?,?)
+        VALUES (%s,%s,%s,%s,%s)
         ''', (message.chat.id, src, dest, message.text, result))
         database.commit()
         database.close()
